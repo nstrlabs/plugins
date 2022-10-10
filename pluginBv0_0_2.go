@@ -35,3 +35,5 @@ func (v PluginBv0_0_2Validator) Validate(configuration map[string]interface{}) e
 	}
 	return nil
 }
+
+var ValidatorPluginB2 PluginBv0_0_2Validator

@@ -35,3 +35,5 @@ func (v PluginAValidator) Validate(configuration map[string]interface{}) error {
 	}
 	return nil
 }
+
+var ValidatorPluginA PluginAValidator
