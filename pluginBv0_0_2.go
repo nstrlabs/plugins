@@ -1,6 +1,6 @@
 package main
 
-import "github.com/ivanbron/lib"
+import "github.com/nstrlabs/lib"
 
 type pluginBv0_0_2 struct {
 }

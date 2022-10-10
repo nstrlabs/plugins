@@ -1,7 +1,7 @@
-module github.com/ivanbron/plugins
+module github.com/nstrlabs/plugins
 
 go 1.18
 
-require github.com/ivanbron/lib v0.0.1
+require github.com/nstrlabs/lib v0.0.2
 
-replace github.com/ivanbron/lib v0.0.1 => ../lib
+replace github.com/nstrlabs/lib v0.0.2 => ../lib
