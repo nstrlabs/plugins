@@ -26,7 +26,7 @@ A few findings while working with plugins:
 * We used -trimpath file to build the plugins and plugin users, engine and 
   api, had to be launched with the same flag. This requires better 
   understanding of this feature and how (whether) impacts our purposes. 
-* An preliminary conclusion indicates that in our ultimate use case, where 
+* A preliminary conclusion indicates that in our ultimate use case, where 
   users will be implementing their on features, users should be providing 
   the source code so that it can be built using the proper versions of 
   language and libraries. 
