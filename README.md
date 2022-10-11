@@ -24,8 +24,11 @@ A few findings while working with plugins:
   build using the exact same lib version, otherwise it will return an error 
   indicating so. 
 * We used -trimpath file to build the plugins and plugin users, engine and 
-  api, had to be launched with the same flag. This requires better 
-  understanding of this feature and how (whether) impacts our purposes. 
+  api, had to be launched with the same flag. According to the documentation: 
+    remove all file system paths from the resulting executable.
+    Instead of absolute file system paths, the recorded file names
+  will begin either a module path@version (when using modules),
+  or a plain import path (when using the standard library, or GOPATH).
 * A preliminary conclusion indicates that in our ultimate use case, where 
   users will be implementing their on features, users should be providing 
   the source code so that it can be built using the proper versions of 
