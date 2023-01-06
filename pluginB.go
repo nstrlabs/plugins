@@ -6,11 +6,13 @@ import (
 )
 
 type pluginB struct {
-	pluginName string
+	field string
 }
 
-func (pa *pluginB) Execute() string {
-	return "hello from plugin " + pa.pluginName
+func (pa *pluginB) Execute(msg lib.Msg) error {
+	// pluginB gets the last bytes of the raw message
+	msg.Add(pa.field, msg.GetRaw()[4:])
+	return nil
 }
 
 type factoryPluginB struct {
@@ -19,7 +21,7 @@ type factoryPluginB struct {
 var FactoryPluginB = factoryPluginB{}
 
 func (f *factoryPluginB) New(configuration map[string]interface{}) lib.Feature {
-	return &pluginB{pluginName: configuration["name"].(string)}
+	return &pluginB{field: configuration["name"].(string)}
 }
 
 type PluginBValidator func(configuration map[string]interface{}) error
