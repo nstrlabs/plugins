@@ -2,17 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/nstrlabs/lib"
+	"github.com/nstrlabs/FeatureSDK/pkg/feature"
 )
 
-type pluginB struct {
+type PluginB struct {
+	feature.DefaultStatelessFeature
 	field string
 }
 
-func (pa *pluginB) Execute(msg lib.Msg) error {
-	// pluginB gets the last bytes of the raw message
-	msg.Add(pa.field, msg.GetRaw()[4:])
-	return nil
+func (pa *PluginB) Execute(msg feature.Message) (string, error) {
+	// plugin a gets the first bytes of the raw message
+	value, _ := feature.NewValueFromBytes(msg.GetText()[4:], feature.String)
+	_ = msg.AddEventField(pa.field, value)
+	return "default", nil
 }
 
 type factoryPluginB struct {
@@ -20,8 +22,9 @@ type factoryPluginB struct {
 
 var FactoryPluginB = factoryPluginB{}
 
-func (f *factoryPluginB) New(configuration map[string]interface{}) lib.Feature {
-	return &pluginB{field: configuration["name"].(string)}
+func (f *factoryPluginB) NewFeature(params feature.FactoryParams) (feature.
+Feature, error) {
+	return &PluginB{field: params.Configuration["name"].(string)}, nil
 }
 
 type PluginBValidator func(configuration map[string]interface{}) error

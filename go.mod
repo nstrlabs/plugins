@@ -1,7 +1,9 @@
 module github.com/nstrlabs/plugins
 
-go 1.18
+go 1.19
 
-require github.com/nstrlabs/lib v0.0.2
+require github.com/nstrlabs/FeatureSDK v0.0.4
 
-replace github.com/nstrlabs/lib v0.0.2 => ../lib
+replace github.com/nstrlabs/FeatureSDK v0.0.4 => ../../FeatureSDK
+
+require github.com/golang/mock v1.6.0 // indirect

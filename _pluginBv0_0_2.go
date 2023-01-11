@@ -1,15 +1,15 @@
 package main
 
 import (
+	"FeatureSDK/pkg/feature"
 	"fmt"
-	"github.com/nstrlabs/lib"
 )
 
 type pluginBv0_0_2 struct {
 	field string
 }
 
-func (pa *pluginBv0_0_2) Execute(msg lib.Msg) error {
+func (pa *pluginBv0_0_2) Execute(msg feature.InMsg) error {
 	// pluginBv0_0_2 gets the last bytes of the raw message
 	return nil
 }
@@ -19,7 +19,7 @@ type factoryPluginBv0_0_2 struct {
 
 var FactoryPluginBv_0_0_2 = factoryPluginBv0_0_2{}
 
-func (f *factoryPluginBv0_0_2) New(configuration map[string]interface{}) lib.Feature {
+func (f *factoryPluginBv0_0_2) New(configuration map[string]interface{}) feature.Feature {
 	return &pluginBv0_0_2{field: configuration["name"].(string)}
 }
 
